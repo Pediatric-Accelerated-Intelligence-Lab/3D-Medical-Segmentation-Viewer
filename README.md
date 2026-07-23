@@ -1,9 +1,9 @@
 
 **Introduction**
 
-The segmentation of MRI scans is a time-intensive task. This web app is designed to aid clinicians in identifying tumor growth and volume. For example, the standard brain MRI for a glioma patient requires multiple sequences: T1-Weighted, T2-Weighted, FLAIR, and T1 Contrast-Enhanced. Then, a clinician must scross through every axial, sagittal, and coronal slice to calculate the volume of the tumor. 
+The manual segmentation of MRI scans is a time-intensive task. This web app is designed to facilitate clinicians in identifying tumor growth and volume. For example, the standard brain MRI for a glioma patient requires multiple sequences: T1-Weighted, T2-Weighted, FLAIR, and T1 Contrast-Enhanced. Then, a clinician must scross through every axial, sagittal, and coronal slice to calculate the volume of the tumor. 
 
-Deep learning segmentation can reduce time it takes to calculate such tumors. By producing an initial segmentation within minutes, clinicians can review these and make corrections if needed. 
+Deep learning-based segmentation workflows can reduce time it takes to calculate such tumor volumes. By generating an initial segmentation within minutes, clinicians can review these and make corrections if needed. 
 
 At the Children's National Hospital, the PAI lab built models for multiple tasks, including adult glioma, pediatric tumors, meningioma, and more. The goal of this web application is for clinicians to upload their patient's MRI scans, select the corresponding tumor type, and receive interactive axial, sagittal, and coronal views of the segmentation along with volumetric measuremtns for each tumor subregion within minutes. 
 
@@ -17,7 +17,7 @@ To add a new task:
 
 To edit the codebase, you first clone the repository on your local device. 
 
-First, download Visual Studio Code. Then, navigate to the repository web page on your browser. Click on the green button that reads "Code" and copy the HTTPS link. Now, in VS Code click "Clone Git Repository".
+First, download Visual Studio Code using a standard web browser. Then, navigate to the repository web page on your browser. Click on the green button that reads "Code" and copy the HTTPS link. Now, in VS Code click "Clone Git Repository".
 
 <img width="412" height="294" alt="Screenshot 2026-07-02 at 11 14 25 AM" src="https://github.com/user-attachments/assets/f94ffde5-6cb8-4d5e-b735-0805a8b13316" />
 
@@ -64,6 +64,3 @@ TASK_MODALITIES[TaskName.newtask.value] = ["native T1", "post-contrast T1-weight
 In DUMMY_FILE_NAMES, indicate what the input filenames look like. 
 
 <img width="527" height="164" alt="Screenshot 2026-07-06 at 11 14 22 AM" src="https://github.com/user-attachments/assets/f2a11f64-86ff-48db-8cd6-fed678b13f13" />
-
-
-
