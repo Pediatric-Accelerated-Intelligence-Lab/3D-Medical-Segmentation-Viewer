@@ -57,7 +57,7 @@ In LABEL_MAPPING_FACTORY, define what the colored regions are. Each number repre
 
 <img width="266" height="690" alt="Screenshot 2026-07-06 at 11 08 02 AM" src="https://github.com/user-attachments/assets/0fca1276-7d15-468c-803e-cfdcedfc1618" />
 
-Indicate which scan types your container needs. If it needs all four scan types (FLAIR, T1, T2, T1c) add it to FULL_MODALITY_TASKS. If it doesn't need al lfour, indicate which tasks it needs like this: 
+Indicate which scan types your container needs. If it needs all four scan types (FLAIR, T1, T2, T1c) add it to FULL_MODALITY_TASKS. If it doesn't need all four, indicate which tasks it needs like this: 
 
 TASK_MODALITIES[TaskName.newtask.value] = ["native T1", "post-contrast T1-weighted"]
 
