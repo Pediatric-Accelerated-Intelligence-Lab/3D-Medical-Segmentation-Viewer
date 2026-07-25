@@ -5,12 +5,10 @@ The manual segmentation of MRI scans is a time-intensive task. This web app is d
 
 Deep learning-based segmentation workflows can reduce time it takes to calculate such tumor volumes. By generating an initial segmentation within minutes, clinicians can review these and make corrections if needed. 
 
-At the Children's National Hospital, the PAI lab built models for multiple tasks, including adult glioma, pediatric tumors, meningioma, and more. The goal of this web application is for clinicians to upload their patient's MRI scans, select the corresponding tumor type, and receive interactive axial, sagittal, and coronal views of the segmentation along with volumetric measuremtns for each tumor subregion within minutes. 
+At the Children's National Hospital, the PAI lab built models for multiple tasks, including adult glioma, pediatric tumors, meningioma, and more. The goal of this web application is for clinicians to upload their patient's MRI scans, select the corresponding tumor type, and receive interactive axial, sagittal, and coronal views of the segmentation along with volumetric measurements for each tumor subregion within minutes. 
 
-**Website Architecture + How to Use**
+This app is a segmentation app. You input multiple MRI scans and the app outputs the full 3D segmentation mask and tumor volumes. The frontend is built using Gradio, an open-source Python library that allows for building interactive websites with machine learning models. Each docker container contains an AI model that will perform the corresponding task. The backend is designed using Gradio and Docker, such that adding a new segmentation task only requires changes in constants.py. It also features parallel execution, allowing multiple models to run simultaneously. 
 
-The frontend is built using Gradio, an open-source Python library that allows for building interactive websites with machine learning models. Each docker container contains an AI model that will perform the corresponding task. The backend is designed such that adding a new segmentation task only requires changes in constants.py. 
-To add a new task:
 
 
 **How to Clone Repository**
