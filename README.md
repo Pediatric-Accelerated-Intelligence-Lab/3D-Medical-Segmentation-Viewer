@@ -14,6 +14,8 @@ This app is a segmentation app. You input multiple MRI scans and the app outputs
 
 **How to Clone Repository**
 
+Before proceeding, you must have Python version 3.11 and Docker downloaded on your computer. To confirm you have the correct Python version installed, type "python --version" in your terminal To confirm you have Docker installed, type "docker --version" in your terminal. 
+
 To edit the codebase, you first clone the repository on your local device. 
 
 First, download Visual Studio Code using a standard web browser. Then, navigate to the repository web page on your browser. Click on the green button that reads "Code" and copy the HTTPS link. Now, in VS Code click "Clone Git Repository".
