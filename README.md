@@ -1,11 +1,12 @@
+3D-Medical-Segmentation-Viewer: A step-by-step guide to deploying a browser-based 3D medical segmentation application
+
+Ananya Vivek, Abhijeet Parida, Marius George Linguraru, and Syed Muhammad Anwar
 
 **Introduction**
 
-The manual segmentation of MRI scans is a time-intensive task. This web app is designed to facilitate clinicians in identifying tumor growth and volume. For example, the standard brain MRI for a glioma patient requires multiple sequences: T1-Weighted, T2-Weighted, FLAIR, and T1 Contrast-Enhanced. Then, a clinician must scross through every axial, sagittal, and coronal slice to calculate the volume of the tumor. 
+The manual segmentation of MRI scans is a time-intensive task. This web app is designed to facilitate clinicians in identifying tumor growth and volume. For example, the standard brain MRI for a glioma patient requires multiple sequences: T1-Weighted, T2-Weighted, FLAIR, and T1 Contrast-Enhanced. Then, a clinician must scross through every axial, sagittal, and coronal slice to calculate the volume of the tumor. Users can run and review medical image segmentation models directly through a web browser. End users do not need to install the application, configure a development environment, or have access to a GPU. The application can be deployed in CPU-only environments, making it easier to share segmentation tools with researchers, clinicians, and collaborators.
 
-Deep learning-based segmentation workflows can reduce time it takes to calculate such tumor volumes. By generating an initial segmentation within minutes, clinicians can review these and make corrections if needed. 
-
-At the Children's National Hospital, the PAI lab built models for multiple tasks, including adult glioma, pediatric tumors, meningioma, and more. The goal of this web application is for clinicians to upload their patient's MRI scans, select the corresponding tumor type, and receive interactive axial, sagittal, and coronal views of the segmentation along with volumetric measurements for each tumor subregion within minutes. 
+Many researchers develop promising medical imaging algorithms but have limited opportunities to evaluate them using real clinical workflows and clinical data. This repository is intended to help researchers deploy their algorithms as accessible web applications so that clinicians can test the models, review their outputs, and provide practical feedback. The goal of this web application is for clinicians to upload their patient's MRI scans, select the corresponding tumor type, and receive interactive axial, sagittal, and coronal views of the segmentation along with volumetric measurements for each tumor subregion within minutes. 
 
 This app is a segmentation app. You input multiple MRI scans and the app outputs the full 3D segmentation mask and tumor volumes. The frontend is built using Gradio, an open-source Python library that allows for building interactive websites with machine learning models. Each docker container contains an AI model that will perform the corresponding task. The backend is designed using Gradio and Docker, such that adding a new segmentation task only requires changes in constants.py. It also features parallel execution, allowing multiple models to run simultaneously. 
 
