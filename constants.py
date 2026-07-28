@@ -13,7 +13,8 @@ class RegionName(StrEnum):
     NET = "NON-ENHANCING TUMOR (NET)"
     ED = "EDEMA (ED)"
     RC = "RESECTION CAVITY (RC)"
-    
+    CC = "CYSTIC COMPONENT (CC)"
+
 
 class TaskName(StrEnum):
       gli = "Pre- and Post-Treatment Adult Glioma"
@@ -44,7 +45,7 @@ TASK_NAME_MAPPING = {
 
 }
 
-   LABEL_MAPPING_FACTORY = {
+LABEL_MAPPING_FACTORY = {
     TaskName.gli.value: {
         1: RegionName.NETC.value,
         2: RegionName.SNFH.value,
@@ -79,7 +80,8 @@ IMAGE_ORDER_LIST = [
 
 FULL_MODALITY_TASKS = (
     TaskName.gli.value,
-    TaskName.peds.value
+    TaskName.peds.value,
+)
 
 TASK_MODALITIES = {task: ALL_MODALITIES for task in FULL_MODALITY_TASKS}
 TASK_MODALITIES[TaskName.menrt.value] = ["post-contrast T1-weighted"]
