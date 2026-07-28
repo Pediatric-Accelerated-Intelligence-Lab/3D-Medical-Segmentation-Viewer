@@ -3,7 +3,7 @@
 *Ananya Vivek, Abhijeet Parida, Marius George Linguraru, and Syed Muhammad Anwar*
 
 ---
-
+ 
 ## Introduction
 
 The manual segmentation of MRI scans is a time-intensive task. This web app is designed to facilitate clinicians in identifying tumor growth and volume. For example, the standard brain MRI for a glioma patient requires multiple sequences: T1-Weighted, T2-Weighted, FLAIR, and T1 Contrast-Enhanced. Then, a clinician must scroll through every axial, sagittal, and coronal slice to calculate the volume of the tumor. Users can run and review medical image segmentation models directly through a web browser. End users do not need to install the application, configure a development environment, or have access to a GPU. The application can be deployed in CPU-only environments, making it easier to share segmentation tools with researchers, clinicians, and collaborators.
