@@ -12,14 +12,17 @@ fi
 if [ ! -d "$ENV_DIR" ]; then
     echo "Creating Python virtual environment..."
     python3.11 -m venv "$ENV_DIR"
+    
+    echo "Activating the virtual environment..."
+    source "$ENV_DIR/bin/activate"
+
+    echo "Installing Python dependencies..."
+    python -m pip install --upgrade pip
+    python -m pip install -r requirements.txt
 fi
 
 echo "Activating the virtual environment..."
 source "$ENV_DIR/bin/activate"
-
-echo "Installing Python dependencies..."
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
 
 echo "Starting deployment..."
 python app.py
