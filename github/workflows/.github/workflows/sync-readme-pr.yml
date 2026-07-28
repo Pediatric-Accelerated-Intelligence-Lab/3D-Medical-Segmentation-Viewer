@@ -1,0 +1,39 @@
+name: Sync README to docs/index (create PR)
+
+on:
+  push:
+    paths:
+      - 'README.md'
+  workflow_dispatch: {}
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Build docs/index.md from README.md
+        run: |
+          mkdir -p docs
+          # Simple copy. If you want front-matter, replace with the variant shown earlier.
+          cp README.md docs/index.md
+
+          # only create a PR if the file changed
+          if git diff --quiet -- docs/index.md; then
+            echo "No changes to docs/index.md"
+            exit 0
+          fi
+
+      - name: Create pull request with changes
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: sync README.md → docs/index.md [skip ci]"
+          title: "chore: sync README.md → docs/index.md"
+          body: "This PR updates docs/index.md to match README.md (automated sync)."
+          branch: "sync/readme-to-docs-${{ github.run_id }}"
+          base: "${{ github.ref_name }}"
