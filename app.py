@@ -496,4 +496,4 @@ with gr.Blocks(title="Brain Tumor Segmenter") as demo:
 
 
 if __name__ == "__main__":
-    demo.queue().launch(server_name="0.0.0.0", server_port=8000, show_api=False, favicon_path='./app_assets/favicon.ico')
+    demo.queue().launch(server_name="0.0.0.0", server_port=8010, show_api=False, favicon_path='./app_assets/favicon.ico')

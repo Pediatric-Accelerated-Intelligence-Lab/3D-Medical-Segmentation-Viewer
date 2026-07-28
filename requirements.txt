@@ -3,5 +3,6 @@ gradio==5.9.1
 nibabel==5.4.2
 numpy==2.2.6
 pillow==11.3.0
+pydantic<2.11
 pyplastimatch==0.4.6
 SimpleITK==2.5.5

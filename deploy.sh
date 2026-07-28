@@ -22,4 +22,4 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 
 echo "Starting deployment..."
-# Add the existing application deployment command here.
+python app.py
