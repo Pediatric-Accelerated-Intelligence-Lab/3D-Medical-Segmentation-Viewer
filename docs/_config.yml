@@ -1,6 +1,6 @@
-title: HOPE
+title: 3D-Medical-Segmentation-Viewer
 logo: /assets/img/CN_Vrt_RGB_HiRes_Lg.png
-description: HOPE Platform Overview
+description: A step-by-step guide to deploying a browser-based 3D medical segmentation application
 show_downloads: false
 google_analytics:
 theme: jekyll-theme-minimal
