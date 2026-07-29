@@ -3,7 +3,6 @@ import os
 import shutil
 import logging
 import subprocess
-import time
 from pathlib import Path
 from typing import Tuple, List, Dict, Any
 
@@ -17,7 +16,7 @@ from fops import delete_make_folder, get_img_mask, render_slice
 from app_assets.utils import image_to_base64
 from constants import (
     DUMMY_DIR, DUMMY_FILE_NAMES, DOCKER_TASK_DICT, DOCKER_OUTPUT, IMAGE_ORDER_LIST, LABEL_MAPPING_FACTORY,
-    SUFFIX, AXIS_MAP, TASK_NAME_MAPPING, EXAMPLES_FULL_DIR, EXAMPLE_OUTPUTS, TASK_SUFFIXES, TaskName,
+    SUFFIX, AXIS_MAP, TASK_NAME_MAPPING, EXAMPLES_FULL_DIR, TASK_SUFFIXES, TaskName,
     ALL_MODALITIES, TASK_MODALITIES
 )
 # Example usage
@@ -89,34 +88,21 @@ def run_inference(
     for key in valid_suffixes:
         shutil.copy(image_paths[key], input_path / DUMMY_FILE_NAMES[docker][key])
 
-    real_name = str(primary_image.name).replace(f"-{primary_suffix}.nii.gz", "")
-    if not (real_name in EXAMPLE_OUTPUTS.keys()):
-        # Build and run Docker command
-       
-     
-        docker_image, input_mount, input_mode = DOCKER_TASK_DICT[docker]
-        mlcube_cmd = (
-            f"docker run --rm --network none --gpus=all --memory=16G --shm-size 4G "
-            f"-v {input_path.parent}:{input_mount}:{input_mode} -v {output_folder.absolute()}:/output/:rw "
-            f"{docker_image}"
-        )
-        print(mlcube_cmd)
+    # Build and run Docker command
+    docker_image, input_mount, input_mode = DOCKER_TASK_DICT[docker]
+    mlcube_cmd = (
+        f"docker run --rm --network none --gpus=all --memory=16G --shm-size 4G "
+        f"-v {input_path.parent}:{input_mount}:{input_mode} -v {output_folder.absolute()}:/output/:rw "
+        f"{docker_image}"
+    )
+    print(mlcube_cmd)
 
-        # Execute the Docker command
-        subprocess.run(mlcube_cmd, shell=True, check=True)
-        subprocess.run("docker system prune -f", shell=True, check=True)
+    # Execute the Docker command
+    subprocess.run(mlcube_cmd, shell=True, check=True)
+    subprocess.run("docker system prune -f", shell=True, check=True)
 
-        # Move the output to the actual output path
-        os.rename(fake_output_path, output_path)
-    else:
-        # search closest match in EXAMPLE OUTPUTS
-        fake_output_path = EXAMPLE_OUTPUTS[real_name]
-        # randomly wait for 60-75 seconds to simulate processing time
-        wait_time = np.random.randint(60, 75)
-        
-        time.sleep(wait_time)
-        # copy the example output to the output path
-        shutil.copy(fake_output_path, output_path)
+    # Move the output to the actual output path
+    os.rename(fake_output_path, output_path)
     return str(input_path), str(output_path)
 
 

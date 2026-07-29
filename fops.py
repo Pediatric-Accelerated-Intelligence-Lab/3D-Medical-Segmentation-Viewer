@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 import SimpleITK as sitk
 from typing import Tuple
-from constants import TaskName
+from constants import TASK_ORIENTATION, DEFAULT_ORIENTATION
 
 def delete_make_folder(path: Path):
     """Delete the folder if it exists and create a new one.
@@ -83,25 +83,15 @@ def render_slice(
     else:
         raise ValueError(f"Invalid view type: {view}")
 
-    # Flip the slice images upside down for correct orientation for non axial slices
-    if model_docker in {TaskName.peds.value, TaskName.men.value, TaskName.met.value}:
-        if view != "axial":
-            slice_img = np.flipud(slice_img)
-            slice_mask = np.flipud(slice_mask)
-
-    elif model_docker in {TaskName.gli.value, TaskName.ssa.value}:
+    # Apply the orientation correction configured for this task/view in
+    # constants.py. Unconfigured tasks (e.g. a newly added Docker container)
+    # default to no flip instead of raising an error.
+    flip_ud, flip_lr = TASK_ORIENTATION.get(model_docker, {}).get(view, DEFAULT_ORIENTATION)
+    if flip_ud:
         slice_img = np.flipud(slice_img)
         slice_mask = np.flipud(slice_mask)
+    if flip_lr:
+        slice_img = np.fliplr(slice_img)
+        slice_mask = np.fliplr(slice_mask)
 
-        if view == "sagittal":
-            slice_img = np.fliplr(slice_img)
-            slice_mask = np.fliplr(slice_mask)
-
-    elif model_docker in {TaskName.menrt.value, TaskName.nf1.value}:
-        slice_img = np.flipud(slice_img)
-        slice_mask = np.flipud(slice_mask)
-
-        if view == "sagittal":
-            slice_img = np.fliplr(slice_img)
-            slice_mask = np.fliplr(slice_mask)
     return slice_img, slice_mask

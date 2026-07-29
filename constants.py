@@ -63,6 +63,28 @@ LABEL_MAPPING_FACTORY = {
      }
    }
 
+# Optional per-task, per-view flip corrections so slices display in the
+# expected orientation. Each entry is (flip_up_down, flip_left_right).
+# Tasks/views left unconfigured fall back to DEFAULT_ORIENTATION (no flip),
+# so adding a new task here is optional, not required.
+DEFAULT_ORIENTATION = (False, False)
+TASK_ORIENTATION = {
+    TaskName.peds.value: {
+        "coronal": (True, False),
+        "sagittal": (True, False),
+    },
+    TaskName.gli.value: {
+        "axial": (True, False),
+        "coronal": (True, False),
+        "sagittal": (True, True),
+    },
+    TaskName.menrt.value: {
+        "axial": (True, False),
+        "coronal": (True, False),
+        "sagittal": (True, True),
+    },
+}
+
 SUFFIX = {
     "T2 FLAIR": "t2f",
     "native T1": "t1n",
@@ -100,7 +122,6 @@ AXIS_MAP = {"axial": 0, "coronal": 1, "sagittal": 2}
 EXAMPLE_CASES = [
     (TaskName.gli.value, "BraTS-GLI-00492-000"),
 ]
-EXAMPLE_OUTPUTS = {folder: f"example_outs/{folder}.nii.gz" for _, folder in EXAMPLE_CASES}
 
 # Examples Setup
 EXAMPLE_DIR = "./examples"
