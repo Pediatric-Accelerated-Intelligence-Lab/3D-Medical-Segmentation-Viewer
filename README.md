@@ -13,7 +13,7 @@ Many researchers develop promising medical imaging algorithms but have limited o
 This app is a segmentation app. You input multiple MRI scans, and the app outputs the full 3D segmentation mask and tumor volumes. The frontend is built using Gradio, an open-source Python library that allows for building interactive websites with machine learning models. Each Docker container contains an AI model that will perform the corresponding task. The backend is designed using Gradio and Docker, such that adding a new segmentation task only requires changes in constants.py. It also features parallel execution, allowing multiple models to run simultaneously. 
 
 See an example of an app deployed using this repository at [https://segmenter.hope4kids.io](https://segmenter.hope4kids.io)
-
+  
 
 ## Clone Repository
 
