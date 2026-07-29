@@ -88,7 +88,7 @@ LABEL_MAPPING_FACTORY = {
 }
 ```
 Indicate which scan types your container needs. If it needs all four scan types (FLAIR, T1, T2, T1c) add it to `FULL_MODALITY_TASKS`. If it doesn't need all four, indicate which tasks it needs like this: 
-
+ 
 `TASK_MODALITIES[TaskName.newtask.value] = ["native T1", "post-contrast T1-weighted"]`
 
 In `DUMMY_FILE_NAMES`, indicate what the input filenames look like. 
