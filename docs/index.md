@@ -259,4 +259,4 @@ bash deploy.sh
 ```
 
 ---
-For further documentation, see [index.md](docs/index.md).
+
