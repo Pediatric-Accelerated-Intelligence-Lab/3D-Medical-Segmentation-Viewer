@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # 3D-Medical-Segmentation-Viewer: A step-by-step guide to deploying a browser-based 3D medical segmentation application
 
 *Ananya Vivek, Abhijeet Parida, Marius George Linguraru, and Syed Muhammad Anwar*
