@@ -61,7 +61,7 @@ DOCKER_TASK_DICT = {
 In `DOCKER_OUTPUT`, add a line that will indicate which folder the container writes its results into (`"output_dir"` or `"input_dir"`) and what the output file name looks like
 
 example: `TaskName.newtask.value: ("output_dir", f"{DUMMY_DIR}.nii.gz")`
-
+ 
 ```python
 DOCKER_OUTPUT = {
     TaskName.gli.value:   ("output_dir", f"{DUMMY_DIR}.nii.gz")
