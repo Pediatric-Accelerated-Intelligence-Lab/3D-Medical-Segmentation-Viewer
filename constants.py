@@ -110,17 +110,19 @@ TASK_MODALITIES[TaskName.menrt.value] = ["post-contrast T1-weighted"]
 
 
 
-ALL_TASKS = {"t1c": f"{DUMMY_DIR}-t1c.nii.gz", "t2f": f"{DUMMY_DIR}-t2f.nii.gz", "t1n": f"{DUMMY_DIR}-t1n.nii.gz", "t2w": f"{DUMMY_DIR}-t2w.nii.gz"}
+ALL_TASKS = {"t1c": f"{DUMMY_DIR}_t1c.nii.gz", "t2f": f"{DUMMY_DIR}_t2f.nii.gz", "t1n": f"{DUMMY_DIR}_t1n.nii.gz", "t2w": f"{DUMMY_DIR}_t2w.nii.gz"}
 
 DUMMY_FILE_NAMES = {
     TaskName.gli.value:   ALL_TASKS,
-    TaskName.menrt.value: {"t1c": f"{DUMMY_DIR}-t1c.nii.gz"},
+    TaskName.menrt.value: {"t1c": f"{DUMMY_DIR}_t1c.nii.gz"},
     TaskName.peds.value:  ALL_TASKS,
 }
    
 AXIS_MAP = {"axial": 0, "coronal": 1, "sagittal": 2}
 EXAMPLE_CASES = [
     (TaskName.gli.value, "BraTS-GLI-00492-000"),
+    (TaskName.menrt.value, "BraTS-MEN-RT-0308-1"),
+    (TaskName.peds.value, "BraTS-PED-00019-000"),
 ]
 
 # Examples Setup
